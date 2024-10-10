@@ -6,8 +6,9 @@ export default function Upload() {
   const navigate = useNavigate();
   const handleUpload = async () => {
     try {
+        const fileType = file.type; 
         const token = localStorage.getItem('jwtToken');
-        const presignedUrlResponse  = await axios.post('https://uko8r49c8d.execute-api.us-east-1.amazonaws.com/Dev/preurl',{},{
+        const presignedUrlResponse  = await axios.post('https://uko8r49c8d.execute-api.us-east-1.amazonaws.com/Dev/preurl',{contentType: fileType},{
             headers:{
                 'Authorization':`Bearer ${token}`
             }
